@@ -1,2 +1,17 @@
-# Localized-Semantic-Editing-via-Projection-Before-Attention-Latent-Interventions
-A novel, fine-tuning-free framework for patch-level attribute control. By reordering latent interventions to occur after linear projection but before multi-head attention, I ensure strict spatial locality and prevent semantic leakage in Transformers. Verified on CelebA.
+# Localized Semantic Editing via Projection-Before-Attention
+
+Official implementation of the **Projection-Before-Attention** framework for fine-tuning-free latent interventions.
+
+## 🚀 The Innovation
+Most Transformer-based edits suffer from "semantic leakage" because they intervene after the attention mechanism. My research proves that by intervening **after linear projection but before attention**, we can achieve:
+* **Strict Spatial Locality:** Edits only affect targeted patches.
+* **Zero Fine-Tuning:** No model weights are changed.
+* **Linear Control:** Semantic intensity scales predictably with $\alpha$.
+
+## 📁 Project Structure
+* `src/model.py`: FAE architecture with reordered forward pass.
+* `src/intervention.py`: Logic for additive semantic editing and concept vectors.
+* `requirements.txt`: Environment setup.
+
+## 🧪 Theorem 1 Verification
+I have implemented unit tests to verify that for any patch $p$ where the mask $M_p = 0$, the change in representation is mathematically null, ensuring 100% isolation.
