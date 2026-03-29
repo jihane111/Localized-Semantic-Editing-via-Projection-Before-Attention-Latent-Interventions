@@ -8,6 +8,9 @@ Most Transformer-based edits suffer from "semantic leakage" because they interve
 * **Zero Fine-Tuning:** No model weights are changed.
 * **Linear Control:** Semantic intensity scales predictably with $\alpha$.
 
+## 📂 Dataset
+This project uses the **CelebA** dataset. To reproduce the results, ensure the dataset is structured as per the standard torchvision format or use the provided latent extraction scripts in the `notebooks/` folder.
+
 ## 📁 Project Structure
 * `src/model.py`: FAE architecture with reordered forward pass.
 * `src/intervention.py`: Logic for additive semantic editing and concept vectors.
