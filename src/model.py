@@ -21,8 +21,10 @@ class FAE(nn.Module):
         if mask is not None and delta_c is not None:
             z = z + alpha * (mask.unsqueeze(-1) * delta_c)
             
-        # 3. Apply Attention (Contextualization)
-        z_attn, _ = self.attention(z, z, z)
+        # 3. Multi-Head Attention with Residual Connection
+        # Note: we use z as query, key, and value
+        attn_output, _ = self.attention(z, z, z)
+        z = z + attn_output  # This residual connection is key for stability
         
         # 4. Decode back
-        return self.decoder(z_attn)
+        return self.decoder(z)
